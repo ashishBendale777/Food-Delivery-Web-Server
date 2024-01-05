@@ -1,4 +1,4 @@
-const Customer=require("../Modals/CustomerSchema")
+const Customer = require("../Modals/CustomerSchema")
 
 exports.addCustomer = (req, res) => {
     const customer = new Customer({
@@ -25,4 +25,19 @@ exports.getAllCustomers = (req, res) => {
         }).catch((err) => {
             res.status(500).send(err)
         });
+}
+
+exports.custmerLogin = (req, res) => {
+    Customer.findOne({
+        CustomerEmail: req.body.CustomerEmail,
+        CustomerPassword: req.body.CustomerPassword,
+    }).then((cust) => {
+        if (cust) {
+            res.status(200).json({ success: true, data: cust })
+        } else {
+            res.status(200).json({ success: false, data: {} })
+        }
+    }).catch((err) => {
+        res.status(500).send(err)
+    });
 }
