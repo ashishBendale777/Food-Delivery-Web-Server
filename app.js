@@ -4,6 +4,7 @@ const nodemon = require("nodemon")
 const bodyparser = require("body-parser")
 const cors = require('cors')
 
+//imports  
 const multer = require('multer')
 const path = require('path')
 
@@ -49,7 +50,7 @@ server.post('/uploadfile', uploadConfig.single('image'), (req, res) => {
         uploaded: true
     })
 }, (err, req, res, next) => {
-    res.status(400).send({ error: err.message})
+    res.status(400).send({ error: err.message })
 })
 
 server.get('/', (req, res) => {

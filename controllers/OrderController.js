@@ -35,3 +35,14 @@ exports.getOrderbyCustId = (req, res) => {
             res.status(500).send(err)
         });
 }
+
+exports.getOrderbyId = (req, res) => {
+    Order.findOne({ _id: req.body.oid })
+        .populate('UserId')
+        .populate('OrderItems.FoodId')
+        .then((result) => {
+            res.status(200).json(result)
+        }).catch((err) => {
+            res.status(500).send(err)
+        });
+}

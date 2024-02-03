@@ -7,5 +7,6 @@ const OrderController=require("../controllers/OrderController")
 router.post("/addorder", OrderController.addOrder)
 router.get("/allorder", OrderController.getAllOrders)
 router.post("/getorderbyCustid",OrderController.getOrderbyCustId)
+router.post("/getorderbyid",OrderController.getOrderbyId)
 
 module.exports = router
